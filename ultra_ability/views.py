@@ -156,8 +156,8 @@ def subscribe_newsletter(request):
             send_mail(
                 subject="New Newsletter Subscription",
                 message=f"New subscription from:\n\nName: {subscriber.name}\nEmail: {subscriber.email}",
-                from_email="dancingtoilet@gmail.com",
-                recipient_list=["dancingtoilet@gmail.com"],
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.EMAIL_HOST_USER],
                 fail_silently=False,
             )
 
@@ -166,7 +166,7 @@ def subscribe_newsletter(request):
             send_mail(
                 subject="Thank you for subscribing!",
                 message=f"Hi {subscriber.name},\n\nThank you for subscribing to Ultra-Ability monthly newsletter!",
-                from_email="dancingtoilet@gmail.com",
+                from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[subscriber.email],
                 fail_silently=False,
             )
@@ -218,8 +218,8 @@ def contact_me(request):
             send_mail(
                 subject,
                 message,
-                "dancingtoilet@gmail.com",  # From email (set in settings.py)
-                ["dancingtoilet@gmail.com"],    # To email (set in settings.py)
+                settings.EMAIL_HOST_USER,  # From email (set in settings.py)
+                [settings.EMAIL_HOST_USER],    # To email (set in settings.py)
                 fail_silently=False,
             )
 
