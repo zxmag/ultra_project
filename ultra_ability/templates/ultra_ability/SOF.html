@@ -1,0 +1,249 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Ultra-Ability Ministry - Statement of Faith">
+    <meta property="og:description" content="Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ultra_ability/images/dove-icon.png' %}">
+
+    <title>Ultra-Ability Ministry - Statement of Faith</title>
+    <link rel="icon" href="{% static 'ultra_ability/images/dove-icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'ultra_ability/CSS/styles.css' %}">
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font 1 ( EB Garamond )-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <!-- Google Font 2 ( Merienda ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        .content .container{ display: flex; flex-direction: column; }
+        .content .container p{ border-bottom: solid 1px #1E2761; }
+
+        /* Layout for mobile view/screen width ( 0px - 768px ) */
+        @media (max-width: 768px) {
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <!-- Navbar Section -->
+    <nav>
+        <!-- DESKTOP VIEW NAVBAR - with dropdown MENU's -->
+
+        <!-- container div: flex-row layout -->
+        <div class="nav-container">
+            <!-- Home: link to landing page -->
+            <div class="dropdown">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+            </div>
+            <!-- Enlightenment -->
+            <div class="dropdown">
+                <a href="#">Enlightenment</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                    <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                    <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                    <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                </div>
+            </div>
+            <!-- About Ultra-Ability -->
+            <div class="dropdown">
+                <a href="#">Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                    <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                </div>
+            </div>
+            <!-- Support Ultra-Abilty -->
+            <div class="dropdown">
+                <a href="#">Support Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                    <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                </div>
+            </div>
+            <!-- Dr Shirley -->
+            <div class="dropdown">
+                <a href="#">Dr. Shirley Cheng</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                    <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW NAVBAR - with HAMBURGER MENU -->
+
+        <!-- container div: flex-column layout -->
+        <div class="nav-container-mobile">
+            <!-- Hamburger Menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Open hamburger menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <!-- Site Map -->
+            <div class="site-map">
+                <a href="{% url 'ultra_ability:indexURL' %}">Ultra-Ability Ministry</a>
+                <a href="#body">Home</a>
+            </div>
+
+            <!-- Links -->
+            <div class="menu" id="menu">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+                <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- container div -->
+        <div id="hero" class="hero">
+            <h3 style="text-align: center;">Core Biblical Doctrines & Statement of Faith.</h3>
+            <!-- Display Messages from the back-end -->
+            {% if messages %}
+                <div style="color: red; ">
+                    {% for message in messages %}
+                        <h4>{{message}}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <p style="text-align: center;"><b>This is a summary of the fundamental doctrines of the Word of God. <a href="{% url 'ultra_ability:indexURL' %}">Ultra-Ability Ministry</a> is built upon these truths and aims to operate accordingly, so this summary also serves as the statement of faith for this ministry. Please look up the Biblical references included within the summary to verify the truths directly with God's Word.</b></p>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="content">
+        <!-- Container div -->
+        <div class="container" >
+            <p><b>Yahweh (from YHWH in Hebrew)</b> Is the only true God (Isaiah 45:5; John 17:3). Yahweh ("Jehovah" in English) is the Creator of everything that is good, both the physical and spiritual, and created things from nothing (Genesis 1:1, 31; Hebrews 11:3). Yahweh is eternal, self-existent, omnipotent (all-powerful), omniscient (all-knowing), and the only one who is purely good and holy (Exodus 3:14; Psalm 139; Matthew 19:17; Isaiah 6:2). Since Yahweh is the only true God and is purely good, only He alone deserves our sincere worship and complete obedience (Revelation 4:11).</p>
+            <p><b>Jesus</b> is the divine only begotten Son of Yahweh who originally existed as a Spirit Being, the firstborn of all creation through whom Yahweh created the world (Hebrews 1:2; Colossians 1:15-16; John 1:1-3, 18). He is the exact image of Yahweh, having the same spiritual qualities as God (Hebrews 1:3; Colossians 1:15). Jesus and Yahweh are one spiritually. It is this oneness that Jesus desires all Christians to share and enjoy with one another and with him and his Father (John 14:20; John 17:11). Two thousand years ago, Jesus was miraculously "transferred" (for lack of a better word) into the womb of the virgin Mary by God's Holy Spirit (Luke 1:26-35). By this means, Jesus was born into the world as a human being to fulfill his mission as the Messiah (the "Anointed One," which "Christ" also means). As the Christ, Jesus was sent by Yahweh to be a willing sacrifice to die in the place of sinners to pay the penalty for their sins, so those who actively trust in him will be forgiven of their sins and receive eternal life to be lived with Yahweh and Jesus (John 3:16; Hebrews 9:26-27; Hebrews 10:4-22). After Jesus was executed, he was resurrected by God on the third day, and then forty days later ascended back to heaven where he currently reigns only second in line to Yahweh and waits for his enemies to be made the footstool for his feet (1 Corinthians 15:1-9; Acts 1:1-11; Hebrews 10:12-13; Ephesians 1:20-23; 1 Corinthians 15:27). On Yahweh's appointed day, Jesus will return to Earth to establish his 1000-year reign over Earth (Acts 1:11; Revelation 20:4-8). Afterward, he will hand the Kingdom back to Yahweh (1 Corinthians 15:24-28).</p>
+            <p><b>The Holy Spirit</b> proceeds from both Yahweh and Jesus, and God uses His Spirit to perform His deeds, including the creation of the world and the resurrection of Jesus from the dead (Genesis 1:2; Romans 8:11). Yahweh gives His Holy Spirit to each genuine Christian upon their sincere profession of faith in Jesus Christ; the indwelling Spirit then helps the Christian to live a life that is pleasing to Yahweh (John 7:37-40; Titus 3:5-6). To walk by the Spirit is to submit to the Spirit's guidance according to God's will (Galatians 5:16-21). The Spirit will develop the fruit of the Holy Spirit in the Christian which is a bundle of Christ-like qualities such as love, goodness, peace, meekness, and faith (Galatians 5:22-23). The Holy Spirit given to a Christian acts as the guarantee that he or she will inherit the Kingdom of God and all His blessings (Ephesians 1:13-14; Ephesians 4:30; 2 Corinthians 1:21-22).</p>
+            <p><b>The entire Bible</b>, from Genesis in the Old Testament (the Hebrew Scriptures called the Tanakh) to Revelation in the New Testament (Greek Scriptures), is written ("God-breathed") by Yahweh God Almighty, and is therefore His very word (1 Thessalonians 2:13; 2 Timothy 3:16-17; 2 Peter 3:15-16; Revelation 1:1-3; Revelation 22:18-20). Since the Bible is written by Yahweh through His chosen "secretaries," then His Word must be read, studied, taught, and followed by all, as it contains timeless truths, principles, and precepts for righteous living according to God's will (Psalm 119; Psalm 1; 2 Timothy 3:16-17). Only when we study the Bible will we be able to learn who Yahweh and Jesus are, how we can properly worship and serve Yahweh, what Yahweh plans for humanity, how we can please Him and enjoy a sacred relationship with Him, and what we must do to fulfill the purpose for which we are created. The Word of God answers life's colossal questions such as "Where have we come from" and "Where will we go?" Since the Bible is the Word of God, no one should add to it (Proverbs 30:6). It is the only authorized written Word from God.</p>
+            <p><b>The first two humans, Adam and Eve</b>, were created by Yahweh "very good," which meant that they were sinless (Genesis 1:31). They were created in the image of Yahweh, so they had some of the spiritual attributes and capabilities like God, such as having the ability to love, to hate, get angry, and think and reason (Genesis 1:26-27). It also meant that they were granted with free will, the freedom to make moral choices, such as to obey God or to disobey God. In order to enable them to exercise their free will, Yahweh gave them a single law for them to obey or disobey: "Of every tree of the garden you may freely eat; but of the tree of the knowledge of good and evil, you shall not eat of it; for in the day that you eat of it you will surely die." (Genesis 2:16-17) The penalty for disobeying this law was death. By their free will, Adam and Eve chose to disobey this law by eating from the tree, so Yahweh punished them with death (Genesis 3:19).</p>
+            <p><b>Sin</b> is the violation of God's laws, as crimes are violations of manmade laws (1 John 3:4). All unrighteousness is sin (1 John 5:17). Those who commit sins are called sinners or transgressors of the Law (James 2:9-11).</p>
+            <p><b>The fall of humanity</b> occurred when Adam and Eve disobeyed Yahweh. From then onward, sin entered into humanity, as each person born since then has inherited a sin nature from Adam and Eve when they fell into sin (Romans 5:12). Yahweh has established that the penalty for sin is death (Romans 6:23). This means that anyone who is ever born will be punished with death, as the sin nature causes a person to sin. No one has been able to perfectly obey the laws of God (Romans 3:10-12, 23).</p>
+            <p><b>Death</b> is the state of non-existence; it is the same condition as before one is born. When people die, their bodies return to the dust as God had said (Genesis 3:19). Those who have died do not know anything and have no thoughts (Psalm 146:3-4). Death is compared to "sleep" in the Bible (Daniel 12:2) because like a long, unconscious period of time during sleep, every person will "wake up" (be resurrected) to receive judgment. Thus, this is what Hebrews 9:27 refers to: "appointed for men to die once, and after this, judgment." So every person dies once, and then upon resurrection, they receive judgment: eternal life or eternal death.</p>
+            <p><b>Salvation</b> through genuine faith in Jesus is the gift Yahweh has presented to humanity to undo the affects of the fall of humanity (Ephesians 2:8; Romans 5:9-21). In this plan of salvation, Jesus offered himself as a willing sacrifice to die in the place of the sinner to pay for the penalty for their sins so they themselves will not have to die eternally (Hebrews 9:26-28; Isaiah 53:4-5, 10). Once a person confesses their sins, repents, and trust in Jesus for their salvation from eternal death, that person will receive the Holy Spirit which helps the new Christian live in accordance with God's principles and precepts (Matthew 4:17; Acts 2:38; Acts 26:20; Acts 16:30-31; John 3:16; Titus 3:5-6). By this, the Christian is born again into a new creation, with a new life and heart that aims to please Yahweh (2 Corinthians 5:17). Without Yahweh's salvation, every human being will be destined to die eternally, since every person is a sinner and that the penalty for sin is death. To learn more about salvation, please read the following article written by Dr. Shirley Cheng: <a href="http://drshirleycheng.blogspot.com/2012/03/inspiration-from-blind-your-road-to.html" target="_blank">Your Road to Glorification - The Five Stages of Salvation: Justification, Reconciliation, Adoption, Sanctification, & Glorification</a></p>
+            <p><b>The resurrection</b> is the event where Yahweh will raise up all the dead from death to be judged by Jesus (1 Corinthians 15:12-23; 2 Corinthians 5:10; Romans 2:5-16). The righteous (those who put faith in Yahweh and in Jesus) will receive immortality, while the wicked will receive eternal death (John 5:28-29; Daniel 12:2; 1 Corinthians 15:52-54). The resurrection of the righteous will occur upon Jesus' return to Earth at his second coming, right before he begins his thousand-year reign over Earth (1 Thessalonians 4:13-18; 1 Corinthians 15:23). The righteous, particularly those appointed by Christ, will reign with him during the Millennium (Revelation 20:5-6; Luke 22:28-30). The resurrection of the rest will occur at the end of the Millennium (Revelation 20:13-15). Any person who is not found in the book of life will be sentenced to the second death, which is eternal death (the first death is temporary and is what every person goes through prior to Jesus' return) (Revelation 20:13-15).</p>
+            <p><b>The rapture</b> of genuine Christians will occur immediately following the resurrection of the righteous upon Jesus return to Earth. The rapture is simply the act whereby Christians are caught up into the sky to meet Jesus as he returns. From then onward, Christians will live with Yahweh and Christ forever (1 Thessalonians 4:17).</p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- container div -->
+         <div class="footer-container">
+            <!-- Footer Top Row -->
+            <div class="footer-top">
+                <div class="external-links">
+                    <b>External Links: </b>
+                    <a href="https://www.amazon.com/author/shirleycheng" target="_blank"><i class="fab fa-amazon"></i><b> Amazon</b></a>
+                    <p></p>
+                    <a href="https://facebook.com/drshirleycheng" target="_blank"><i class="fab fa-facebook"></i><b> Facebook</b></a>
+                    <p></p>
+                    <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank"><i class="fas fa-gift"></i><b> GoFundMe</b></a>
+                </div>
+
+                <!--Subscription form-->
+                <div class="subscription-form">
+                    <form action="{% url 'ultra_ability:subscribe_newsletter' %}" method="post">
+                        <b>Subscribe to Ultra-Ability Monthly Newsletter:</b>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.confirm_email.label_tag }}
+                            {{ form.confirm_email }}
+                        </div>
+                        <div style="text-align: center;"><button style=" border:1px solid gold;border-radius:5px;padding:5px;" type="submit">Subscribe</button></div>
+
+                        <!-- Display Messages from the back-end -->
+                        {% if messages %}
+                            <div style="color: red; ">
+                                {% for message in messages %}
+                                    <h4>{{message}}</h4>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+                <!--Latest Newsletters-->
+                <div class="latestNewsLetters">
+                    <b>Latest Ultra-Ability Newsletters:</b>
+                    {% for i in last2Newsletters %}
+                    <ul>
+                        <li style="font-size: medium;"><a href="{{ i.getAbsoluteUrl }}"> {{ i.title}}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p><b>&copy; <span id="currentYear"></span> Ultra-Ability Ministry. All rights reserved.</b></p>
+                    <!-- JavaScript to Update the Year -->
+                    <script>
+                        // Get the current year
+                        const currentYear = new Date().getFullYear();
+                        // Update the content of the span element with the current year
+                        document.getElementById('currentYear').textContent = currentYear;
+                    </script>
+                </div>
+                <div class="developer">
+                    <p> Web Application Developed and maintained by <a href="https://www.linkedin.com/in/gideon-unique-a3b03b19a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><b>$GM</b></a></p>
+                </div>
+                <!-- Back to Top Button -->
+                <div class="backToTop">
+                    <button onclick="scrollToTop()" style="padding: 20px 10px 15px 10px"><b>TOP <i class="fa-solid fa-circle-arrow-up"></i></b></button>
+                    <script>
+                        function scrollToTop() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                </div>
+            </div>
+
+         </div>
+
+    </footer>
+
+
+    <script src="{% static 'ultra_ability/JS/script.js' %}"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Ultra-Ability Ministry - Mission">
+    <meta property="og:description" content="Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ultra_ability/images/dove-icon.png' %}">
+
+    <title>Ultra-Ability Ministry - Mission</title>
+    <link rel="icon" href="{% static 'ultra_ability/images/dove-icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'ultra_ability/CSS/styles.css' %}">
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font 1 ( EB Garamond )-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <!-- Google Font 2 ( Merienda ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+
+    <style>
+        .content{ margin: 1rem;}
+        .content h3{ text-decoration: underline; background-color: inherit; color: #1E2761;}
+
+
+        /* Layout for mobile view/screen width ( 0px - 768px ) */
+        @media (max-width: 768px) {
+        }
+      </style>
+</head>
+
+<body id="body">
+
+    <!-- Navbar Section -->
+    <nav>
+        <!-- DESKTOP VIEW NAVBAR - with dropdown MENU's -->
+
+        <!-- container div: flex-row layout -->
+        <div class="nav-container">
+            <!-- Home: link to landing page -->
+            <div class="dropdown">
+
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+            </div>
+            <!-- Enlightenment -->
+            <div class="dropdown">
+                <a href="#">Enlightenment</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                    <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                    <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                    <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                </div>
+            </div>
+            <!-- About Ultra-Ability -->
+            <div class="dropdown">
+                <a href="#">Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                    <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                </div>
+            </div>
+            <!-- Support Ultra-Abilty -->
+            <div class="dropdown">
+                <a href="#">Support Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                    <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                </div>
+            </div>
+            <!-- Dr Shirley -->
+            <div class="dropdown">
+                <a href="#">Dr. Shirley Cheng</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                    <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW NAVBAR - with HAMBURGER MENU -->
+
+        <!-- container div: flex-column layout -->
+        <div class="nav-container-mobile">
+            <!-- Hamburger Menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Open hamburger menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <!-- Site Map -->
+            <div class="site-map">
+                <a href="{% url 'ultra_ability:indexURL' %}">Ultra-Ability Ministry</a>
+                <a href="#body">Home</a>
+            </div>
+
+            <!-- Links -->
+            <div class="menu" id="menu">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+                <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section>
+        <!-- container div -->
+        <div id="hero" class="hero">
+            <h3 style="text-align: center;"> The Mission, Vision and Values of Ultra-Ability Ministry.</h3>
+            <!-- Display Messages from the back-end -->
+            {% if messages %}
+                <div style="color: red; ">
+                    {% for message in messages %}
+                        <h4>{{message}}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+
+    <!-- Main Content Section -->
+    <main class="content" style="max-width: 50rem; margin: auto;">
+        <!-- Container div -->
+        <div class="container">
+            <h3 style="text-align: center;"><b>Mission</b></h3>
+            <p style="text-align: center;">Ultra-Ability Ministry aims to meet both the spiritual and physical needs of people, by helping them develop and maintain a sacred love relationship with our Creator through free in-depth Bible teaching, bringing healing through loving chaplaincy <a href="{% url 'ultra_ability:indexURL' %}">The Chapel of Compassion</a>, and providing physical relief to families in developing countries through the <a href="https://gofundme.com/f/uniteinlove37" target="_blank">Unite in Love</a> campaign.</p>
+
+            <h3 style="text-align: center;"><b>Vision</b></h3>
+            <p style="text-align: center;">As a vessel of God, Ultra-Ability Ministry hopes to empower individuals and families with the loyal love and tender mercy of God so that they'll live with ultra-ability through the divine power despite life's storms.</p>
+
+            <h3 style="text-align: center;"><b>Values</b></h3>
+            <p style="text-align: center;">Ultra-Ability Ministry serves people with integrity, and promotes hope, humor and healing.</p>
+            <br>
+            <br>
+            <br>
+            <p><u>Privacy Policy:</u> This site does not rent, sell, or disclose information, including e-mail addresses, about visitors. Visitors may choose to share personal information on any guestbook, message board, or discussion group we manage. This information is considered public and may be accessible to anyone.
+        </div>
+    </main>
+
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- container div -->
+         <div class="footer-container">
+            <!-- Footer Top Row -->
+            <div class="footer-top">
+                <div class="external-links">
+                    <b>External Links: </b>
+                    <a href="https://www.amazon.com/author/shirleycheng" target="_blank"><i class="fab fa-amazon"></i><b> Amazon</b></a>
+                    <p></p>
+                    <a href="https://facebook.com/drshirleycheng" target="_blank"><i class="fab fa-facebook"></i><b> Facebook</b></a>
+                    <p></p>
+                    <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank"><i class="fas fa-gift"></i><b> GoFundMe</b></a>
+                </div>
+
+                <!--Subscription form-->
+                <div class="subscription-form">
+                    <form action="{% url 'ultra_ability:subscribe_newsletter' %}" method="post">
+                        <b>Subscribe to Ultra-Ability Monthly Newsletter:</b>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.confirm_email.label_tag }}
+                            {{ form.confirm_email }}
+                        </div>
+                        <div style="text-align: center;"><button style=" border:1px solid gold;border-radius:5px;padding:5px;" type="submit">Subscribe</button></div>
+
+                        <!-- Display Messages from the back-end -->
+                        {% if messages %}
+                            <div style="color: red; ">
+                                {% for message in messages %}
+                                    <h4>{{message}}</h4>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+                <!--Latest Newsletters-->
+                <div class="latestNewsLetters">
+                    <b>Latest Ultra-Ability Newsletters:</b>
+                    {% for i in last2Newsletters %}
+                    <ul>
+                        <li style="font-size: medium;"><a href="{{ i.getAbsoluteUrl }}"> {{ i.title}}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p><b>&copy; <span id="currentYear"></span> Ultra-Ability Ministry. All rights reserved.</b></p>
+                    <!-- JavaScript to Update the Year -->
+                    <script>
+                        // Get the current year
+                        const currentYear = new Date().getFullYear();
+                        // Update the content of the span element with the current year
+                        document.getElementById('currentYear').textContent = currentYear;
+                    </script>
+                </div>
+                <div class="developer">
+                    <p> Web Application Developed and maintained by <a href="https://www.linkedin.com/in/gideon-unique-a3b03b19a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><b>$GM</b></a></p>
+                </div>
+                <!-- Back to Top Button -->
+                <div class="backToTop">
+                    <button onclick="scrollToTop()" style="padding: 20px 10px 15px 10px"><b>TOP <i class="fa-solid fa-circle-arrow-up"></i></b></button>
+                    <script>
+                        function scrollToTop() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                </div>
+            </div>
+
+         </div>
+
+    </footer>
+
+
+    <script src="{% static 'ultra_ability/JS/script.js' %}"></script>
+</body>
+</html>

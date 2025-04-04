@@ -1,0 +1,304 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Ultra-Ability Ministry - Bible FAQs">
+    <meta property="og:description" content="Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ultra_ability/images/dove-icon.png' %}">
+
+
+    <title>Ultra-Ability Ministry - Bible FAQs</title>
+    <link rel="icon" href="{% static 'ultra_ability/images/dove-icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'ultra_ability/CSS/styles.css' %}">
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font 1 ( EB Garamond )-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <!-- Google Font 2 ( Merienda ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+    <style>
+        .content-container{ display: flex; flex-direction: column; gap: 1rem; }
+        .content-container div{ border: solid; border-width: 1px; border-color: #1E2761; border-radius: 5px; padding: 20px;}
+        .content-container li{ font-weight: bold; }
+        .content-container ul{ padding: 0; margin: 0; }
+
+
+    </style>
+
+</head>
+
+<body id="body">
+
+    <!-- Navbar Section -->
+    <nav>
+        <!-- DESKTOP VIEW NAVBAR - with dropdown Enlightenment's -->
+
+        <!-- container div: flex-row layout -->
+        <div class="nav-container">
+            <!-- Home: link to landing page -->
+            <div class="dropdown">
+
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+            </div>
+            <!-- Enlightenment -->
+            <div class="dropdown">
+                <a href="#">Enlightenment</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                    <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                    <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                    <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                </div>
+            </div>
+            <!-- About Ultra-Ability -->
+            <div class="dropdown">
+                <a href="#">Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                    <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                </div>
+            </div>
+            <!-- Support Ultra-Abilty -->
+            <div class="dropdown">
+                <a href="#">Support Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                    <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                </div>
+            </div>
+            <!-- Dr Shirley -->
+            <div class="dropdown">
+                <a href="#">Dr. Shirley Cheng</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                    <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW NAVBAR - with HAMBURGER MENU -->
+
+        <!-- container div: flex-column layout -->
+        <div class="nav-container-mobile">
+            <!-- Hamburger Menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Open hamburger menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <!-- Site Map -->
+            <div class="site-map">
+                <a href="{% url 'ultra_ability:indexURL' %}">Ultra-Ability Ministry</a>
+                <a href="#body">Home</a>
+            </div>
+
+            <!-- Links -->
+            <div class="menu" id="menu">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+                <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+            </div>
+          </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section>
+        <!-- container div -->
+        <div id="hero" class="hero">
+            <h3>Bible Frequently Asked Questions.</h3>
+            <br>
+            <!-- Display Messages from the back-end -->
+            {% if messages %}
+                <div style="color: red; text-align:center">
+                    {% for message in messages %}
+                        <h4>{{message}}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <p>Believing in Yahweh and His Son Jesus Christ and walking according to Yahweh's will is the only way to salvation (eternal life) for anyone who believes. Each person's eternal destiny is up to that person. Each of us has one decision to make: eternal life or eternal death?</p>
+            <img style="width:100%; height:auto; margin:auto; max-height: 300px;border:solid 1px #1E2761; border-radius:5px;" src="{% static 'ultra_ability/images/FAQS-pic.jpg' %}" alt=" Image of a person studying the bible">
+            <p>Eternal life begins with the knowledge of Yahweh and Jesus, and that knowledge lies only in the Bible, the book Yahweh Himself wrote for our instructions and proper living. Please, if you haven't yet, pick up a copy of the Bible and start your journey into truly knowing God. The below Bible articles Shirley has written will help you understand some of the important topics you will read about.</p>
+            <br>
+        </div>
+    </section>
+
+    <!-- Main Content section -->
+    <main>
+        <!-- Container div  -->
+        <div class="content-container" style="max-width: 50rem; margin: auto;">
+            <div>
+                <h3 style="text-align: center; font-weight: bold;">{{ category1.0.category}} </h3> <!--Note: this use of dot notation in accessing the first element in a python list, is a django template syntax, NOT a python syntax-->
+                {% for i in category1 %}
+                    <ul>
+                        <li>{{ i.title}}</li>
+                    </ul>
+                    <p>{{ i.body|truncatewords_html:50|safe }}<a href="{{ i.getAbsoluteUrl }}">...Read more</a></p>
+                {% endfor %}
+                <br>
+            </div>
+            <br>
+
+            <div>
+                <h3 style="text-align: center; font-weight: bold;">{{ category2.0.category}} </h3> <!--Note: this use of dot notation in accessing the first element in a python list, is a django template syntax, NOT a python syntax-->
+                {% for i in category2 %}
+                <ul>
+                    <li>{{ i.title}}</li>
+                </ul>
+                <p>{{ i.body|truncatewords_html:50|safe }}<a href="{{ i.getAbsoluteUrl }}">...Read more</a></p>
+                {% endfor %}
+                <br>
+            </div>
+            <br>
+
+            <div>
+                <h3 style="text-align: center; font-weight: bold;"> {{ category3.0.category}} </h3> <!--Note: this use of dot notation in accessing the first element in a python list, is a django template syntax, NOT a python syntax-->
+                {% for i in category3 %}
+                <ul>
+                    <li>{{ i.title}}</li>
+                </ul>
+                <p>{{ i.body|truncatewords_html:50|safe }}<a href="{{ i.getAbsoluteUrl }}">...Read more</a></p>
+                {% endfor %}
+                <br>
+            </div>
+            <br>
+
+            <div>
+                <h3 style="text-align: center; font-weight: bold;"> {{ category4.0.category}} </h3> <!--Note: this use of dot notation in accessing the first element in a python list, is a django template syntax, NOT a python syntax-->
+                {% for i in category4 %}
+                <ul>
+                    <li>{{ i.title}}</li>
+                </ul>
+                <p>{{ i.body|truncatewords_html:50|safe }}<a href="{{ i.getAbsoluteUrl }}">...Read more</a></p>
+                {% endfor %}
+                <br>
+            </div>
+            <br>
+
+            <div>
+                <h3 style="text-align: center; font-weight: bold;">{{ category5.0.category}}  </h3> <!--Note: this use of dot notation in accessing the first element in a python list, is a django template syntax, NOT a python syntax-->
+                {% for i in category5 %}
+                <ul>
+                    <li>{{ i.title}}</li>
+                </ul>
+                <p>{{ i.body|truncatewords_html:50|safe }}<a href="{{ i.getAbsoluteUrl }}">...Read more</a></p>
+                {% endfor %}
+                <br>
+                <br>
+            </div>
+
+            <p style="text-align: center;"> Have Bible questions not answered here? Then <a href="{% url 'ultra_ability:contactURL' %}">ask Shirley or request a free Bible study via e-mail!</a></p>
+            <p style="text-align: center;">She'll be more than glad to lead you to an answer. Remember, no question about the Bible is ever too small or stupid!</p>
+        </div>
+    </main>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- container div -->
+         <div class="footer-container">
+            <!-- Footer Top Row -->
+            <div class="footer-top">
+                <div class="external-links">
+                    <b>External Links: </b>
+                    <a href="https://www.amazon.com/author/shirleycheng" target="_blank"><i class="fab fa-amazon"></i><b> Amazon</b></a>
+                    <p></p>
+                    <a href="https://facebook.com/drshirleycheng" target="_blank"><i class="fab fa-facebook"></i><b> Facebook</b></a>
+                    <p></p>
+                    <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank"><i class="fas fa-gift"></i><b> GoFundMe</b></a>
+                </div>
+
+                <!--Subscription form-->
+                <div class="subscription-form">
+                    <form action="{% url 'ultra_ability:subscribe_newsletter' %}" method="post">
+                        <b>Subscribe to Ultra-Ability Monthly Newsletter:</b>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.confirm_email.label_tag }}
+                            {{ form.confirm_email }}
+                        </div>
+                        <div style="text-align: center;"><button style=" border:1px solid gold;border-radius:5px;padding:5px;" type="submit">Subscribe</button></div>
+
+                        <!-- Display Messages from the back-end -->
+                        {% if messages %}
+                            <div style="color: red; ">
+                                {% for message in messages %}
+                                    <h4>{{message}}</h4>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+                <!--Latest Newsletters-->
+                <div class="latestNewsLetters">
+                    <b>Latest Ultra-Ability Newsletters:</b>
+                    {% for i in last2Newsletters %}
+                    <ul>
+                        <li style="font-size: medium;"><a href="{{ i.getAbsoluteUrl }}"> {{ i.title}}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p><b>&copy; <span id="currentYear"></span> Ultra-Ability Ministry. All rights reserved.</b></p>
+                    <!-- JavaScript to Update the Year -->
+                    <script>
+                        // Get the current year
+                        const currentYear = new Date().getFullYear();
+                        // Update the content of the span element with the current year
+                        document.getElementById('currentYear').textContent = currentYear;
+                    </script>
+                </div>
+                <div class="developer">
+                    <p> Web Application Developed and maintained by <a href="https://www.linkedin.com/in/gideon-unique-a3b03b19a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><b>$GM</b></a></p>
+                </div>
+                <!-- Back to Top Button -->
+                <div class="backToTop">
+                    <button onclick="scrollToTop()" style="padding: 20px 10px 15px 10px"><b>TOP <i class="fa-solid fa-circle-arrow-up"></i></b></button>
+                    <script>
+                        function scrollToTop() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                </div>
+            </div>
+
+         </div>
+
+    </footer>
+
+
+    <script src="{% static 'ultra_ability/JS/script.js' %}"></script>
+
+</body>
+</html>

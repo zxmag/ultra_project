@@ -1,0 +1,290 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Ultra-Ability Ministry - Meet the Founder">
+    <meta property="og:description" content="Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ultra_ability/images/dove-icon.png' %}">
+
+    <title>Ultra-Ability Ministry - Meet the Founder</title>
+    <link rel="icon" href="{% static 'ultra_ability/images/dove-icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'ultra_ability/CSS/styles.css' %}">
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font 1 ( EB Garamond )-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <!-- Google Font 2 ( Merienda ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+    <style>
+        .content{ margin: 0 20px;}
+        .top { display: flex; flex-wrap: wrap; width: 100%; }
+        .text-container {flex: 1; line-height: 1.5; text-align: justify; }
+        .text-container h3{ margin-top: 0;}
+        .image {
+            float: left; /* Makes text wrap around the image */
+            width: 350px; height: auto; border:solid 1px #1E2761; border-radius:5px;  margin-right: 10px; /* space between image and text */ }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .image {
+                float: none; /* Disable float on small screens */
+                display: block; margin: 0 auto 15px; width: 100%;
+            }
+        }
+    </style>
+</head>
+<body id="body">
+
+    <!-- Navbar Section -->
+    <nav>
+        <!-- DESKTOP VIEW NAVBAR - with dropdown MENU's -->
+
+        <!-- container div: flex-row layout -->
+        <div class="nav-container">
+            <!-- Home: link to landing page -->
+            <div class="dropdown">
+
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+            </div>
+            <!-- Menu -->
+            <div class="dropdown">
+                <a href="#">Enlightenment</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                    <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                    <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                    <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                </div>
+            </div>
+            <!-- About Ultra-Ability -->
+            <div class="dropdown">
+                <a href="#">Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                    <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                </div>
+            </div>
+            <!-- Support Ultra-Abilty -->
+            <div class="dropdown">
+                <a href="#">Support Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                    <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">Fundraiser</a>
+                </div>
+            </div>
+            <!-- Dr Shirley -->
+            <div class="dropdown">
+                <a href="#">Dr. Shirley Cheng</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                    <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW NAVBAR - with HAMBURGER MENU -->
+
+        <!-- container div: flex-column layout -->
+        <div class="nav-container-mobile">
+            <!-- Hamburger Menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Open hamburger menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <!-- Site Map -->
+            <div class="site-map">
+                <a href="{% url 'ultra_ability:indexURL' %}">Ultra-Ability Ministry</a>
+                <a href="#body">Home</a>
+            </div>
+            <!-- Links -->
+            <div class="menu" id="menu">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+                <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">Fundraiser</a>
+                <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section>
+        <!-- container div -->
+        <div id="hero" class="hero">
+            <h3 style="text-align: center;">Meet the Founder - Dr. Shirley Cheng.</h3>
+            <!-- Display Messages from the back-end -->
+            {% if messages %}
+                <div style="color: red; ">
+                    {% for message in messages %}
+                        <h4>{{message}}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="content" style="max-width: 45rem; margin: auto;">
+        <div class="top">
+            <div class="text-container">
+                <img class="image" src="{% static 'ultra_ability/images/shirley7.jpg' %}" alt="Dr. Shirley Cheng's photo">
+                <h3 style="color: #fff; background-color:#1E2761;"><b> In Shirley's own words...</b></h3>
+                <h4 style="text-align: left; color: inherit; background-color:#1E276 ">Of all your achievements, what are you most proud of?</h4>
+                <p>That was what a reporter wanted to know while she interviewed me for a newspaper feature. All the major accomplishments I've achieved in my twenty-five years swam through my head at lightning speed. Which is my proudest achievement?</p>
+                <p>I could tell her that I was most proud of mastering grade level after only about 180 days of school attendance. You see, owing to years of hospitalization for the severe juvenile rheumatoid arthritis that has been ravaging my body since infancy, I didn't receive any education until age eleven when my health was finally stabilized. Back then, I only knew my ABCs and very simple English; I knew that two plus two equaled four and that three times five made fifteen. I had no idea from where rain came or why a beautiful rainbow would soon follow. Therefore, I was placed in a special education class in elementary school.</p>
+                <p>Wanting to learn as much as I could as quickly as possible, I absorbed all that was taught in class, and mostly self-taught myself how to read; like Cookie Monster, I devoured one book after another as though they were chocolate chip cookies, yet always hungered for more. </p>
+                <p>My thirst for knowledge paid off after only about 180 days of attendance, for I had mastered grade level and immediately entered regular sixth grade in middle school.</p>
+                <p>Or I could tell the reporter that I'm proudest of the fact that without either eyesight or Braille, I was able to write and calculate long chemistry equations in my head, and complete my GED test, including mathematical calculations and problem solving, graphs, and an essay; still scoring an exceptional 3280 on the test, for which I received a special recognition award.</p>
+                <p>Perhaps my proudest achievement is that I'm able to write, format, publish, and promote my books, and design and maintain my own Web site, as a blind award-winning author with two handful of book awards.</p>
+                <p>But, you see, all that would be a lie. None of these things is what I'm most proud of.</p>
+                <p>"That I'm happy with my life," I answered the reporter unhesitatingly. "That's what I'm proudest of."</p>
+                <p>Despite my multiple physical disabilities and blindness, I'm very content. I've learned to look forward and upward, not at the seen but at the unseen, for "the things which are seen are temporal, but the things which are not seen are eternal." (2 Corinthians 4:18, WEB) While I may be decaying physically, I'm being renewed spiritually day by day, as I use challenges as exercise machines for my mind and spirit. I challenge my challenges, for they may be big, but God is bigger. </p>
+                <p>That leads to my ultimate secret to happiness: my sacred relationship with my beloved Heavenly Father, Jehovah God Almighty. He is my strength and my power, for He can always turn a situation from impossible to possible. Through His Word, He has lovingly assured me, "I, Jehovah thy God, will hold thy right hand, saying unto thee, Fear not; I will help thee." (Isaiah 41:13, ASV)  </p>
+                <p>Yes, I may be blind, I may be crippled; but with Jehovah as my Guide, I'm certainly not disabled--I'm ultra-abled, for "whoso trusteth in Jehovah, happy is he"! (Proverbs 16:20)</p>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="short">
+                <h3 style="text-align: center;"> Dr. Shirley Cheng's Biography</h3>
+                <h3 style="text-decoration: underline; color: inherit; background-color: inherit;">Short Bio (detailed bio is below)</h3>
+                <p>Dr. Shirley Cheng, a blind and physically disabled ordained deacon and Kingdom minister, licensed as a ministry chaplain, Bible teacher, award-winning author (with twenty-seven book awards, including nine Parent to Parent Adding Wisdom Awards and two Mom's Choice Awards), proclaimer of Jehovah God's Good News of Salvation through Jesus Christ, motivational speaker, poet, and author of nine books and contributor to more than twenty-five books, has had severe juvenile rheumatoid arthritis since infancy. Owing to years of hospitalization, she received no education until age eleven. Back then, she knew very little English and her book knowledge was non-existent. However, after only about 180 days of special education in elementary school, she mastered grade level in all areas and entered a regular sixth grade class in middle school. Unfortunately, Shirley lost her eyesight at the age of seventeen. </p>
+                <p>Shirley is a three-time Summa Cum Laude (Highest Honor) graduate who holds a Bachelor of Biblical Studies, Master of Divinity, and Doctor of Divinity. After a successful eye surgery, she hopes to earn multiple science doctorates from Harvard University.</p>
+                <p>Shirley is also an advocate of <a href="http://www.shirleycheng.com/parentalrights.html" target="_blank">parental rights</a> in children's medical care, and <a href="http://www.shirleycheng.com/advocate.html" target="_blank">aide/caregiver</a> monitoring and screening for students with special needs and disabled people. As a parental rights advocate, she wants to help today's loving parents protect and keep custody of their children. "When doctors ask yes or no, parents should have the right to say no," says Shirley, who is the survivor of the 1990 five-month internationally broadcast news of mother Juliet Cheng's custody battle with a doctor. Juliet was on CBS This Morning with Paula Zahn.</p>
+                <p>Shirley promotes aide advocacy for the disabled because she was mistreated and abused by one-to-one aides when she attended school. "The trouble with the uncaring aides actually lies in the authorities," she says. "If they listened to my complaints and kept a close watch on the aides, I wouldn't have gone through all the suffering."</p>
+                <p>"Although I'm blind, I can see far and wide; even though I'm disabled, I can climb high mountains," says Shirley. "Let the ropes of hope in Jehovah God haul you high!"</p>
+                <p>Shirley Cheng is the author of the eight-award winner Waking Spirit: Prose & Poems the Spirit Sings (with foreword by New York Times bestselling author Cynthia Brian), a heartfelt collection that explores a world of dancing hearts, singing spirits, with infinite love from life (ISBN: 9780615136806 paperback; 9780615138930 hardback); award winner Embrace Ultra-Ability! Wisdom, Insight & Motivation from the Blind Who Sees Far and Wide (ISBN: 9780615155227); Daring Quests of Mystics, a soothing read to relax the mind, body, and spirit (ISBN: 9781411656642); an empowering 700-page autobiography, The Revelation of a Star's Endless Shine: A Young Woman's Autobiography of 20-Year Victories over Victimization (ISBN: 9780615150444); Dance with Your Heart: Tales and Poems That the Heart Tells, a collection of inspirational and fantasy short stories (fairy tales, fables, and myths) and poems for the heart from the heart (ISBN: 9781411618589); Parental Rights in Children's Medical Care: Where Is Our Freedom to Say No? A Look at the Injustice of the American Medical System (ISBN: 9780615149943).</p>
+                <p>With highly acclaimed experts like Dr. Wayne Dyer, Tony Robbins, and Brian Tracy, Shirley co-authored Wake Up...Live the Life You Love: Finding Your Life's Passion, Second Edition, the latest installment in the bestselling Wake Up...Live the Life You Love series; she is also the co-author of 101 Great Ways to Improve Your Life, Volume 2, along with leading experts Jack Canfield, John Gray, Richard Carlson, Alan Cohen, Bob Proctor, et al.</p>
+                <p>She had been published twice before her writing career. One of her short stories, Mary Miller, the Elusive Lady, received Honorable Mention and was published by the Poughkeepsie Journal in 1997, and a poem, The Colors of the Rainbow, earned merit status and was published in Celebrate! New York Young Poets Speak Out in 1999.</p>
+                <p>In 2006, Shirley tied for 1st place in the national writing contest for Be the Star You Are! founded by New York Times bestselling author, TV/radio personality Cynthia Brian, garnering her a third appearance on Cynthia's live radio show. Shirley's winning entry, titled The Jewel from Heavenly Father, is dedicated to her beloved mother Juliet Cheng. In 2007, Shirley received Honorable Mention in the same contest for her essay, I Hold the Power, her personal story of overcoming blindness at age seventeen.</p>
+                <p>Shirley is available for interviews, speaking engagements, book signings, and inspirational events. She has been on over twenty radio shows (as of December 2006), including Be the Star You Are! for three times, The Donna Seebo Show, and Stu Taylor on Business. She was featured in World Journal, the largest Chinese national newspaper in North America, in July of 2004.</p>
+                <p>For more inspiration, read Shirley's empowering print <a href="http://www.shirleycheng.com/interview.html" target="_blank">interviews</a></p>
+            </div>
+
+            <div class="detailed">
+                <h3 style="text-decoration: underline; color: inherit; background-color: inherit;">Detailed Bio</h3>
+                <p>Shirley Cheng, born in New York in 1983, is a miracle survivor with an exceptionally tenacious spirit and a colorful personality. Shirley was diagnosed with severe juvenile rheumatoid arthritis at only 11 months old. She spent her days in constant pain for years, confined to a wheelchair, and was hospitalized for many years between America and China until 1994, at age eleven. She was unable to receive any form of education until her health was stabilized. Shirley started attending school at age 11 in a special education class in elementary school. On the very first day of school, she knew very little English and other subjects. But miraculously, she was transferred to a regular 6th grade class in middle school after about 180 days of attendance in the special education class (in the middle, she went to China for the sixth time), for she had achieved grade level in all subjects. She has been a voracious reader, reading an average of six hundred pages (three books) daily, and has read over a total of two thousand books. Since 6th grade, Shirley has received a score of 100 on every New York State essay test, and stayed at the top of the class at all times. She was awarded for achieving the highest grade of 97 in Earth Science in her 8th grade class. She was the Student of the Year and Student of the Month, as well as a three-time winner of the National Reflections Program in visual arts. She writes both prose and poetry. One of her stories was published by the local newspaper, the <i>Poughkeepsie Journal </i>,in 1997, and a poem was published in an anthology, <i>Celebrate! New York's Young Poets Speak Out </i>in  1999. She received a standing ovation when she gave a speech as a candidate for Student Body Vice President in 9th grade. She was a contributor to the high school newspaper, providing artwork in 10th grade. 	</p>
+                <p>When her eyesight began to deteriorate at the beginning of 10th grade, she had to use two pieces of magnifying glasses on enlarged print to do her work throughout the year, even with the artwork she provided for the school newspaper. In classes, she learned only by listening to the teachers, even with chemistry and math, because she was unable to see the blackboard, but still maintained excellent grades. Unfortunately, she completely lost her vision in April of 10th grade. She then received home tutoring, and successfully did all her schoolwork strictly by using cassette tapes and tape recorders. She wrote and balanced long chemical formulas and equations for chemistry in her head. Her high school overall average is a 97 (GPA 3.9 with no Advanced Placement classes). But Shirley could not accumulate enough credits to receive a high school diploma from her school because of her vision loss. In October of 2002, she received her high school equivalency diploma. She took the entire GED test, including mathematical calculations, graphs, and an essay, without Braille or vision. She received a special recognition award for scoring an exceptional 3280 on the GED test. She was a student speaker at the GED graduation ceremony, and was the only one who received a standing ovation for her speech.</p>
+                <p>Shirley has an immense passion for life and is full of life and vigor. Despite her severe disabilities, Shirley has striven to overcome overwhelming obstacles. She deserves credits for having survived her various ordeals, and that her inexhaustible fortitude, sheer strength, tenacious spirit, and outstanding efforts and achievements should be emphasized. Shirley was brought up in a very simple, single-parent, Chinese-speaking family with no influence on education. She has to be on her own in pursuing education. She has extraordinary goals with the aspiration of attending college at Harvard University, where she plans to earn doctorates in microbiology, zoology, astronomy, physiology, and pathology after a successful eye surgery.</p>
+                <p>Shirley formatted her books (layout, graphic placement, resizing, cropping, etc.) on her own without eyesight. She wrote her books using a screen reader on a computer, typing with only her two index fingers at the speed of about 60 words per minute. She also designs and maintains her site on her own.</p>
+                <p>Shirley is a true magical gift, a star with endless shine.</p>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- container div -->
+         <div class="footer-container">
+            <!-- Footer Top Row -->
+            <div class="footer-top">
+                <div class="external-links">
+                    <b>External Links: </b>
+                    <a href="https://www.amazon.com/author/shirleycheng" target="_blank"><i class="fab fa-amazon"></i><b> Amazon</b></a>
+                    <p></p>
+                    <a href="https://facebook.com/drshirleycheng" target="_blank"><i class="fab fa-facebook"></i><b> Facebook</b></a>
+                    <p></p>
+                    <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank"><i class="fas fa-gift"></i><b> GoFundMe</b></a>
+                </div>
+
+                <!--Subscription form-->
+                <div class="subscription-form">
+                    <form action="{% url 'ultra_ability:subscribe_newsletter' %}" method="post">
+                        <b>Subscribe to Ultra-Ability Monthly Newsletter:</b>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.confirm_email.label_tag }}
+                            {{ form.confirm_email }}
+                        </div>
+                        <div style="text-align: center;"><button style=" border:1px solid gold;border-radius:5px;padding:5px;" type="submit">Subscribe</button></div>
+
+                        <!-- Display Messages from the back-end -->
+                        {% if messages %}
+                            <div style="color: red; ">
+                                {% for message in messages %}
+                                    <h4>{{message}}</h4>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+                <!--Latest Newsletters-->
+                <div class="latestNewsLetters">
+                    <b>Latest Ultra-Ability Newsletters:</b>
+                    {% for i in last2Newsletters %}
+                    <ul>
+                        <li style="font-size: medium;"><a href="{{ i.getAbsoluteUrl }}"> {{ i.title}}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p><b>&copy; <span id="currentYear"></span> Ultra-Ability Ministry. All rights reserved.</b></p>
+                    <!-- JavaScript to Update the Year -->
+                    <script>
+                        // Get the current year
+                        const currentYear = new Date().getFullYear();
+                        // Update the content of the span element with the current year
+                        document.getElementById('currentYear').textContent = currentYear;
+                    </script>
+                </div>
+                <div class="developer">
+                    <p> Web Application Developed and maintained by <a href="https://www.linkedin.com/in/gideon-unique-a3b03b19a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><b>$GM</b></a></p>
+                </div>
+                <!-- Back to Top Button -->
+                <div class="backToTop">
+                    <button onclick="scrollToTop()" style="padding: 20px 10px 15px 10px"><b>TOP <i class="fa-solid fa-circle-arrow-up"></i></b></button>
+                    <script>
+                        function scrollToTop() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                </div>
+            </div>
+
+         </div>
+
+    </footer>
+
+
+    <script src="{% static 'ultra_ability/JS/script.js' %}"></script>
+
+
+
+</body>
+</html>
+
+</body>
+</html>

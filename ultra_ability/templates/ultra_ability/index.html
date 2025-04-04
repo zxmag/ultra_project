@@ -1,0 +1,332 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Ultra-Ability Ministry">
+    <meta property="og:description" content="Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ultra_ability/images/dove-icon.png' %}">
+
+    <title>Ultra-Ability Ministry</title>
+    <link rel="icon" href="{% static 'ultra_ability/images/dove-icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'ultra_ability/CSS/styles.css' %}">
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font 1 ( EB Garamond )-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <!-- Google Font 2 ( Merienda ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+</head>
+<body id="body">
+
+    <!-- Navbar Section -->
+    <nav>
+        <!-- DESKTOP VIEW NAVBAR - with dropdown MENU's -->
+
+        <!-- container div: flex-row layout -->
+        <div class="nav-container">
+            <!-- Home: link to home page -->
+            <div class="dropdown">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+            </div>
+            <!-- Enlightenment -->
+            <div class="dropdown">
+                <a href="#">Enlightenment</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                    <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                    <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                    <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                </div>
+            </div>
+            <!-- About Ultra-Ability -->
+            <div class="dropdown">
+                <a href="#">Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                    <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                </div>
+            </div>
+            <!-- Support Ultra-Abilty -->
+            <div class="dropdown">
+                <a href="#">Support Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                    <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                </div>
+            </div>
+            <!-- Dr Shirley -->
+            <div class="dropdown">
+                <a href="#">Dr. Shirley Cheng</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                    <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW NAVBAR - with HAMBURGER MENU -->
+
+        <!-- container div: flex-column layout -->
+        <div class="nav-container-mobile">
+            <!-- Hamburger Menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Open hamburger menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <!-- Site Map -->
+            <div class="site-map">
+                <a href="#body">Bible Study</a>
+                <a href="#chapel1">Chapel of Compassion</a>
+                <a href="#uil-view">Unite in Love</a>
+            </div>
+
+            <!-- Hamburger menu drop-down links -->
+            <div class="menu" id="menu">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+                <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section>
+        <!-- container div -->
+        <div id="hero" class="hero" >
+            <h3 style="text-align: center; text-decoration: none;"> Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit! </h3>
+            <img style="width:100%; height:auto; max-height: 300px;border:solid 1px #1E2761; border-radius:5px;" src="{% static 'ultra_ability/images/index-dove.jpg' %}" alt="image of a flying white dove, with a beam of light descending from the sky and upon the dove.">
+            <h4 style="text-align: center; text-decoration: none;"> "The grace of the Lord Jesus Christ, the love of God, and the fellowship of the Holy Spirit, be with you all. Amen." (2 Corinthians 13:14, WEB)</h4>
+        </div>
+    </section>
+    <!-- Display Messages from the back-end -->
+    {% if messages %}
+        <div style="color: red; text-align:center; ">
+            {% for message in messages %}
+                <h4>{{message}}</h4>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main content section - default layout( Desktop view):  2 x 1 flex layout on Desktop responsively turns into A 3-row flex layout on mobile, -->
+    <main style="max-width: 100rem; margin: auto;">
+        <!-- container div -->
+        <div class="content-container" >
+            <!-- Left Side - container div -->
+            <section class="left-side" style="max-width: 50rem; margin: 0 auto;">
+                <div>
+                    <h3 id="bible-study">Bible Study with Dr. Shirley Cheng</h3>
+
+                    <p><b>Why are we here? What's the purpose of our existence? Where will we go? Will there be life beyond the grave? Would sickness, poverty, and crime ever end? Is there hope for humankind?
+                        How can we have a meaningful relationship with God and fellow humans?</b>
+                        </p>
+                        <p>Have you ever asked yourself these questions? If so, do you want answers?</p>
+                        <p>Receive accurate answers to these and your other nagging questions about life through a free, personal online Bible study via e-mail.</p>
+                        <p> Did you know that trust and belief in the Bible is not blind faith? The Bible is proven to be:
+                        <ol type="1">
+                            <li><b>Historically Accurate:</b> Archeologists have unearthed evidences of certain people, places, and events described in the Bible, and historians have attested to the Bible's historical accuracy.</li>
+                            <li><b>Scientifically Sound:</b> The Bible stated certain scientific facts thousands of years before scientists proved them. No contradiction between Bible accounts and scientific facts exists.</li>
+                            <li><b>Prophetic:</b> Hundreds of prophecies in the Bible have been fulfilled exactly as they were foretold hundreds and thousands of years before the events actually took place. Only a handful of prophecies are yet to be fulfilled, and they concern all of humanity.</li>
+                        </ol>
+                        </p>
+                        <p>The ability to accurately prophesy events hundreds and thousands of years in advance is the striking trademark of the Bible, a feature unique only to this book.</p>
+                        <p>Isaiah 13:19-20 accurately prophesied the eternal destruction of Babylon centuries before it happened. What was once the world power lies in ruins to this date, exactly as the Bible foretold. It was something unimaginable when the prophecy was given, because it is like saying that the crowded New York City or Shanghai will be totally uninhabited forever in a month from now. By whom the city would be initially conquered was foretold as well: Persian Emperor Cyrus (Isaiah 45). In addition, the Bible prophesied Cyrus releasing Israelites from Babylonian captivity to rebuild Jerusalem, and it came true (Isaiah 44:28).</p>
+                        <p>Daniel 8:20-23 foretold the reigns of Media-Persia and then Greece, prophesying that four kingdoms would come from the first mighty king, Alexander the Great, after his death, and that those kingdoms wouldn't experience the power that the first king had. This prophecy was given during the reign of Babylon, centuries before Alexander the Great was born. (Also foretold in Daniel 11:3-4.)</p>
+                        <p>Daniel 9:25-26 prophesied the time of Jesus' death and the destruction of the second Jerusalem temple, more than 560 years in advance.</p>
+                        <p>Daniel 11:6-35 foretold dozens of historical events concerning the Ptolemy and Antiochus rule and dynasties.</p>
+                        <p>The book of Nahum foretold the eternal destruction of Nineveh, while the book of Obadiah prophesied the eternal destruction of Edom. All their prophecies came true.</p>
+                        <p>These are just a small portion of Biblical prophecies that have been fulfilled to the letter. Thus, the Bible is where you'll find accurate and truthful answers to life's colossal questions, questions that most people have asked themselves.</p>
+
+                        <img style="margin:10px 0;border:solid 1px #1E2761; border-radius:5px;" src="{% static 'ultra_ability/images/bible-study.jpg' %}" alt="Image of people studying the bible">
+                        <p>If you want to know the right answers to your questions, then become Bible buddies with Dr. Shirley Cheng. The online Bible study will be done in your own pace, in your style, at the comfort of your home, via e-mail with no financial cost to you. Shirley will answer life or Bible questions you may have, or help you better understand specific Bible passages. See her as your friend/guide/answer lady. She does not belong to any sect or denomination.</p>
+                        <p>Have questions? You deserve the answers. People from all walks of life, of any faith, religion, denomination, age, race, or background are welcome. Remember, no question about life is ever too small or stupid. "Ask, and it will be given you. Seek, and you will find. Knock, and it will be opened for you. For everyone who asks receives. He who seeks finds. To him who knocks it will be opened." (Matthew 7:7-8, WEB) That's God's promise to you.</p>
+                        <p>Learn the Bible in depth from Genesis to Revelation for free...</p>
+                        <p>Are you interested in obtaining in-depth knowledge of God's Word to help you deepen your understanding of God and His plans and develop a sacred relationship with your Heavenly Father? If so, you are more than welcome to sign up for the In-Depth Ultra-Ability Bible Virtual Class via e-mail.</p>
+
+                        <ul>
+                            <li> The  study will progress in your own pace.</li>
+                            <li> You will work one-on-one with your teacher, Shirley, via e-mail only.</li>
+                            <li> Your personal Bible-related questions will be answered.</li>
+                            <li> Although the virtual class has no financial cost, it will require your dedication and diligence. There will be lessons to complete and tests to take for all Bible chapters. All assignments are in short question and answer format. For example, the assignment for Genesis chapter 1 has these questions to answer:</li>
+                        </ul>
+                        <ol type="1">
+                            <li>Who created the universe, our Earth, and everything on Earth?</li>
+                            <li>How many days did the creation of everything on Earth take? Could those days be literal 24-hour days?</li>
+                            <li>Humans were created in the "image of God." What do you think this means?</li>
+                            <li>When humans were first created, what was their spiritual condition? Were they perfect, or were they sinful? (Hint: read Genesis 1:31)</li>
+                        </ol>
+                        <p>The only textbook for this program is the Bible. If you do not have a copy of the Bible, you can read it online for free at <a href="http://www.BibleGateway.com" target="_blank">BibleGateway</a>.</p>
+                        <p>The class is non-denominational and is not affiliated with any church or ministry.</p>
+                        <p>You have no obligations; you may pause or stop anytime, though you are strongly encouraged to complete the study.  You will study the Bible in depth from Genesis to Revelation in order.</p>
+                        <p id="chapel1">
+                        Want to sign up for the In-Depth Ultra-Ability Bible Virtual Class and give it a try? Then fill out the <a href="{% url 'ultra_ability:contactURL' %}">E-mail Form</a>, and Shirley will respond to your request within three days.
+                        If you do not hear from her after that period, please resend your request, as it might not have gotten through the first time. Read <a href="{% url 'ultra_ability:testimonialsURL' %}">Testimonials</a> from Dr. Shirley's students.
+                       </p>
+
+                </div>
+            </section>
+            <!-- Right Side - container div -->
+            <section class="right-side" style="max-width: 50rem; margin: 0 auto;">
+                <!-- Right-Top Side -->
+                <div class="right-top">
+                    <h3 id="chapel">Chapel of Compassion</h3>
+                    <p></p>
+                    <p>
+                        <b>"Blessed be the God and Father of our Lord Jesus Christ, the Father of mercies and God of all comfort; who comforts us in all our affliction, that we may be able to comfort those who are in any affliction, through the comfort with which we ourselves are comforted by God." (2 Corinthians 1:3-4, WEB)</b>
+                        <br>
+                        <img style="margin: 10px 0; border: solid 1px #1E2761;  border-radius: 5px;" src="{% static 'ultra_ability/images/cross-background.jpg' %}" alt="image of a seemingly weary man leaning against a cross">
+                        Do you feel alone, confused, or down, and just need someone to hold your hands, to give you a listening ear, to pray for you and with you?
+                        Maybe you're having family issues, marital woes, or financial troubles. Maybe someone you dearly love has just passed away. Maybe a friend betrayed your trust. Or maybe, you just need a friend to talk to, receive Biblical guidance, and be comforted, for whatever reason.
+                        <p>
+                        Chaplain Shirley would like to be your friend. You don't have to feel alone. You don't have to keep all your emotions bottled up in your chest to weigh you down. Share your load with someone who cares.
+                        If you need a listening ear or would simply like someone to pray for you, write to sister Shirley anytime. All communication will be done via e-mail. Sister Shirley is not a licensed counselor or attorney, so she does not provide legal advice but only spiritual guidance and prayers.
+                        <a href="{% url 'ultra_ability:contactURL' %}">Contact Chaplain Shirley</a> with your concerns and/or prayer requests. <span id="uil-view"></span>If you do not hear back from her in forty-eight hours, please write again, as your e-mail might not have reached her.
+                        You may also contact Chaplain Shirley on her Facebook profile and send her a friend request there!
+                        Thank you, and God bless you!
+                    </p>
+                </div>
+                <br>
+
+                <!-- Right-Bottom Side -->
+                <div class="right-bottom">
+                    <h3 id="UIL">Unite In Love</h3>
+                    <p></p>
+                    <p>
+                        Founded in 2020 in response to the coronavirus  pandemic, Unite in Love provides emergency relief to families and individuals in developing countries where there's no government assistance or food banks, covering funds for food, rent, medical care, education, home farming, and business startups.
+                        <br>
+                        <br>
+                        "There is strength in number; there is power in love. When we unite in love, we live up to our humanity." --Dr. Shirley Cheng, founder.
+                        <br>
+                        <br>
+                        You, too, can be part of the power of love --  <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank">Give your love gift</a> at Unite in Love. Read <a href="{% url 'ultra_ability:uil-testimonialsURL' %}">Testimonials and Thanks </a> from Families Supported by Unite in Love.
+                        <br>
+                    </p>
+                    <h4>Newspaper and magazine features about Unite in Love:</h4>
+                    <ol>
+                        <li><a href="https://www.wagmag.com/uniting-in-love-to-help-humanity/" target="_blank">"Uniting in love to help humanity" in WAG Magazine</a></li>
+                        <li><a href=" http://yonkerstimes.com/local-author-teacher-overcomes-blindness-to-fight-hunger/" target="_blank">"Local Author and Teacher Overcomes Blindness to Fight Hunger" in Westchester Rising</a></li>
+                        <li><a href="https://www.theexaminernews.com/local-bible-teacher-raises-over-1400-for-coronavirus-relief/" target="_blank">"Local Bible Teacher Raises Over $1,400 for Coronavirus Relief" in the Examiner News</a></li>
+                        <li><a href="https://www.spreaker.com/user/agsportshournyc/3-5-21-adapting-with-dr-shirley-cheng-bl" target="_blank">Listen to the podcast "Adapting with Blind Minister Shirley Cheng" with host Alex Garrett where Dr. Cheng spoke of her life, ministry and purpose</a></li>
+                        <li><a href="https://medium.com/authority-magazine/unstoppable-how-dr-1cf4c961f561" target="_blank">"Unstoppable: How Dr. Shirley Cheng of Ultra-Ability.com Ministry Has Redefined Success While Navigating Society With Multiple Physical Disabilities, Including Blindness"</a></li>
+                    </ol>
+                    <h4>Unite in Love featured photos:</h4>
+                    <div class="images">
+                        <img src="{% static 'ultra_ability/images/uil pic.jpg' %}" alt="Unite in Love photo">
+                        <h5>Family of Faith in Nigeria. Unite in Love is sponsoring Faith's daughters' education and helped her start up a shop which has enabled her to put food on the table.</h5>
+                        <img src="{% static 'ultra_ability/images/uil pic1.jpg' %}" alt="Unite in Love photo">
+                        <h5>Family of Marcy in Kenya, including a friend to her kids. Unite in Love sponsored the construction of the hut they live in.</h5>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- container div -->
+         <div class="footer-container">
+
+            <!-- Footer Top Row -->
+            <div class="footer-top">
+                <div class="external-links">
+                    <b>External Links: </b>
+                    <a href="https://www.amazon.com/author/shirleycheng" target="_blank"><i class="fab fa-amazon"></i><b> Amazon</b></a>
+                    <p></p>
+                    <a href="https://facebook.com/drshirleycheng" target="_blank"><i class="fab fa-facebook"></i><b> Facebook</b></a>
+                    <p></p>
+                    <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank"><i class="fas fa-gift"></i><b> GoFundMe</b></a>
+                </div>
+
+                <!--Subscription form-->
+                <div class="subscription-form">
+                    <form action="{% url 'ultra_ability:subscribe_newsletter' %}" method="post">
+                        <b>Subscribe to Ultra-Ability Monthly Newsletter:</b>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.confirm_email.label_tag }}
+                            {{ form.confirm_email }}
+                        </div>
+                        <div style="text-align: center;"><button style=" border:1px solid gold;border-radius:5px;padding:5px;" type="submit">Subscribe</button></div>
+
+                        <!-- Display Messages from the back-end -->
+                        {% if messages %}
+                            <div style="color: red; ">
+                                {% for message in messages %}
+                                    <h4>{{message}}</h4>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+                <!--Latest Newsletters-->
+                <div class="latestNewsLetters">
+                    <b>Latest Ultra-Ability Newsletters:</b>
+                    {% for i in last2Newsletters %}
+                    <ul>
+                        <li style="font-size: medium;"><a href="{{ i.getAbsoluteUrl }}"> {{ i.title}}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p><b>&copy; <span id="currentYear"></span> Ultra-Ability Ministry. All rights reserved.</b></p>
+                    <!-- JavaScript to Update the Year -->
+                    <script>
+                        // Get the current year
+                        const currentYear = new Date().getFullYear();
+                        // Update the content of the span element with the current year
+                        document.getElementById('currentYear').textContent = currentYear;
+                    </script>
+                </div>
+                <div class="developer">
+                    <p> Web Application Developed and maintained by <a href="https://www.linkedin.com/in/gideon-unique-a3b03b19a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><b>$GM</b></a></p>
+                </div>
+                <!-- Back to Top Button -->
+                <div class="backToTop">
+                    <button onclick="scrollToTop()" style="padding: 20px 10px 15px 10px"><b>TOP <i class="fa-solid fa-circle-arrow-up"></i></b></button>
+                    <script>
+                        function scrollToTop() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                </div>
+            </div>
+         </div>
+    </footer>
+
+
+    <script src="{% static 'ultra_ability/JS/script.js' %}"></script>
+
+</body>
+</html>

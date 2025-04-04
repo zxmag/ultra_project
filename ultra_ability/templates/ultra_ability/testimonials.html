@@ -1,0 +1,274 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Ultra-Ability Ministry - Bible Study Testimonials">
+    <meta property="og:description" content="Experience ultra-ability today by embracing Yahweh (Jehovah) God through Lord Jesus Christ in the Holy Spirit">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ultra_ability/images/dove-icon.png' %}">
+
+    <title>Ultra-Ability Ministry - Bible Study Testimonials</title>
+    <link rel="icon" href="{% static 'ultra_ability/images/dove-icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'ultra_ability/CSS/styles.css' %}">
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font 1 ( EB Garamond )-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <!-- Google Font 2 ( Merienda ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+
+    <style>
+        .content-container{ display: flex; flex-direction: column;}
+        .content-container div{ border-bottom: solid; border-color: #1E2761; border-width: 1px; padding:0; margin:0;}
+        section{ margin-bottom: 0;}
+
+        /* Layout for mobile view/screen width ( 0px - 768px ) */
+        @media (max-width: 768px) {
+        }
+      </style>
+</head>
+
+<body id="body">
+
+    <!-- Navbar Section -->
+    <nav>
+        <!-- DESKTOP VIEW NAVBAR - with dropdown MENU's -->
+
+        <!-- container div: flex-row layout -->
+        <div class="nav-container">
+            <!-- Home: link to landing page -->
+            <div class="dropdown">
+
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+            </div>
+            <!-- Enlightenment -->
+            <div class="dropdown">
+                <a href="#">Enlightenment</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                    <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                    <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                    <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                </div>
+            </div>
+            <!-- About Ultra-Ability -->
+            <div class="dropdown">
+                <a href="#">Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                    <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                </div>
+            </div>
+            <!-- Support Ultra-Abilty -->
+            <div class="dropdown">
+                <a href="#">Support Ultra-Ability</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                    <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                </div>
+            </div>
+            <!-- Dr Shirley -->
+            <div class="dropdown">
+                <a href="#">Dr. Shirley Cheng</a>
+                <div class="dropdown-links">
+                    <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                    <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW NAVBAR - with HAMBURGER MENU -->
+
+        <!-- container div: flex-column layout -->
+        <div class="nav-container-mobile">
+            <!-- Hamburger Menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Open hamburger menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <!-- Site Map -->
+            <div class="site-map">
+                <a href="{% url 'ultra_ability:indexURL' %}">Ultra-Ability Ministry</a>
+                <a href="#body">Home</a>
+            </div>
+
+            <!-- Links -->
+            <div class="menu" id="menu">
+                <a href="{% url 'ultra_ability:indexURL' %}">Home</a>
+                <a href="{% url 'ultra_ability:FOTSListURL' %}">Fruit of the Spirit</a>
+                <a href="{% url 'ultra_ability:FAQListURL' %}">Bible FAQs</a>
+                <a href="{% url 'ultra_ability:newsletterListURL' %}">Newsletter</a>
+                <a href="{% url 'ultra_ability:SOFURL' %}">Statement of Faith</a>
+                <a href="{% url 'ultra_ability:missionURL' %}">Mission</a>
+                <a href="{% url 'ultra_ability:supportURL' %}">Support the Ministry</a>
+                <a href="{% url 'ultra_ability:fundraiserURL' %}" target="_blank">UIL Fundraiser</a>
+                <a href="{% url 'ultra_ability:booksURL' %}" target="_blank">Christian Books</a>
+                <a href="{% url 'ultra_ability:MTFURL' %}">Meet the Founder</a>
+                <a href="{% url 'ultra_ability:contactURL' %}">Contact Dr. Shirley</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section>
+        <!-- container div -->
+        <div id="hero" class="hero">
+            <h3 style="text-align: center;">Testimonials for Ultra-Ability Bible Study.</h3>
+            <!-- Display Messages from the back-end -->
+            {% if messages %}
+                <div style="color: red; ">
+                    {% for message in messages %}
+                        <h4>{{message}}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="content" style="max-width: 50rem; margin:0 auto;">
+        <!-- Container div -->
+        <div class="content-container">
+            <h4 style="color: inherit; background-color: inherit; text-align: left; padding:0;margin:0;"><b>From past and current Bible students...</b></h4>
+            <div>
+                <p>"Praise the Lord brethren! I'm Pastor Christopher from Uganda. I started studying the Bible with Dr. Shirley Cheng for free since October 2019. Before joining Dr. Shirley's class, I thought I knew the Bible but that was a wrong perception, brethren! Dr. Shirley helped and shaped me from my then-narrow understanding to now a person with a vast knowledge.</p>
+                <p>"With only the introduction to Genesis I discovered that for sure I almost knew nothing concerning God's Word; that's when I first learned the detailed answers to all study questions of the Bible chapters, and corrections to my answers, whether they were right or wrong answers, freely without paying a dine!</p>
+                <p>"Sometimes the lessons that Dr. Shirley sends me make me feel I am in the church listening to a sermon, instead of in a lecture room! One thing I have noticed in my experience studying with Dr. Shirley is that it's too hard to receive her "Excellent" comment to your answer; you can write your answer thinking that this time I'm gonna collect all the "Excellent's" but you end up getting one, if at all.</p>
+                <p>"I really praise Yahweh for connecting me to such a wonderful teacher of God's Word through my brother Chris Ssemuddu. Now, I boldly teach God's Word with confidence. In conclusion, I want to appeal to whoever is reading my testimonial and would like to add onto what you know concerning God's Word, please contact Dr. Shirley Cheng; she is at your service. Just join her study and you won't regret it."</p>
+                <p style="text-align: center;"><b>-Pastor Christopher, Uganda.</b></p>
+            </div>
+            <div>
+                <p>"Shirley and I were members of a writer's group when she found me. I was asked to join her in a Bible Study on line. At first I was overwhelmed at the idea because I was 70 years old. Yet, something intrigued me about Shirley and her dedication to her ministry to teach and mentor ones for Jesus Christ.</p>
+                <p>"So, in September of 2011, I cautiously entered a long but wonderful Bible Study with Shirley. We started in Genesis as she asked questions and I answered them for her to be corrected and explained. I am still grateful Shirley would take me on to teach me the Holy Scriptures, as free lessons. We are compatible, since we both use JAWS on our computer which is a program for blind individuals, like Shirley and myself. Sometimes I almost quit, for the passages were difficult for me to grasp, but Shirley's sweet and calm manner inspired me to continue.</p>
+                <p>"When I consider how much I learned, it is mind-boggling for I had never studied the bible, verse by verse, as we have done. I treasure the times we prayed together and sought answers to our personal petitions. Shirley is not only a most intelligent, diligent teacher, she has become one of my dearest friends. God is so good. He loves me and has brought Shirley in my life to proclaim His love and Glory. By studying the Word of God, I have learned to appreciate and love my God, His Son, and the Holy Spirit. It has been a most marvelous and exciting journey for me to be involved with Shirley, and her precious Bible Study. When we finished the book of Revelation, I was relieved but did not want to stop the study. She has certainly lifted me up, and inspired me to keep on studying the Bible, and share what I have learned for God's glory.</p>
+                <p>"May others find Shirley, and her ministry, to enhance the Kingdom of God. With love and respect, Frances"</p>
+                <p style="text-align: center;"><b>-Frances, USA.</b></p>
+            </div>
+            <div>
+                <p>"Well, I met Shirley years back when I was not in a good place and googled about bible study partner ...What attracted me was her love for God despite her physical disabilities. I was wowed that she turned it to cap~abilities. My Bible study with her was awesome; it helped me have a deeper understanding of the Bible because after every chapter is a set of questions that sometimes takes you back to what you read , shockingly one might have just skimmed through some verses without realizing you did. I enjoyed my sessions with her very much and encourage others to sign up with her."</p>
+                <p style="text-align: center;"><b>-Orie, Nigeria.</b></p>
+            </div>
+            <div>
+                <p>"I'm grateful to share my testimonial about my privaladge with my bible study since I began with Genesis. I have grown spiritually and mentally and now I know how to handle questions arising from my studies. I pray that Elohim will strengthen Shirley in her teachings and make her lessons reach more people across the globe."</p>
+                <p style="text-align: center;"><b>-Eliazer, Kenya.</b></p>
+            </div>
+            <div>
+                <p>"I have been taking Bible study lessons with Dr. Shirley on and off for years now. I had read some parts of the Bible and never fully understood what was being said until Dr. Shirley started explaining it to me. She makes it easy to understand. She is such a blessing to me and I would recommend her Bible class. Thank you, Dr. Shirley. May The Almighty continue to bless you and your Ministry for you have been a blessing to me."</p>
+                <p style="text-align: center;"><b>-Agness, USA.</b></p>
+            </div>
+            <div>
+                <p>"Yahweh brought Shirley into my life at a time when I had more questions than answers in my walk with Him. You see, I was raised in a Christian home. However, as I grew older, I knew it was time to come to the "party" on my own accord. This realization found expression in questions like "why do we believe what we believe about Yahweh", "as a text that points to Yahweh, is the Bible even reliable?", etc. One day, I was reading the book of Acts and went online to google something I had read that I didn't understand (I don't remember exactly what that was). While there, I saw Shirley Cheng's website and clicked on it. I read one post, then another, and before I knew it, I had read about 5 or so posts. Furthermore, I saw the option to sign up for Bible study at my own pace, which I did. As I reflect on this experience, I'm thankful that Yahweh has used Shirley to guide me to a better understanding of His character. And thank you Shirley for the kindness and patience with which you helped me understand Yahweh's words."</p>
+                <p style="text-align: center;"><b>--Oswald, USA, from Ghana.</b></p>
+            </div>
+        </div>
+        <p style="text-align: center;"> Want to sign up for the In-Depth Ultra-Ability Bible Virtual Class and give it a try? Then fill out the <a href="{% url 'ultra_ability:contactURL' %}">E-mail Form</a>, and Shirley will respond to your request within three days.
+            If you do not hear from her after that period, please resend your request, as it might not have gotten through the first time.</p>
+        <br>
+        <br>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- container div -->
+         <div class="footer-container">
+            <!-- Footer Top Row -->
+            <div class="footer-top">
+                <div class="external-links">
+                    <b>External Links: </b>
+                    <a href="https://www.amazon.com/author/shirleycheng" target="_blank"><i class="fab fa-amazon"></i><b> Amazon</b></a>
+                    <p></p>
+                    <a href="https://facebook.com/drshirleycheng" target="_blank"><i class="fab fa-facebook"></i><b> Facebook</b></a>
+                    <p></p>
+                    <a href="https://www.gofundme.com/f/uniteinlove37" target="_blank"><i class="fas fa-gift"></i><b> GoFundMe</b></a>
+                </div>
+
+                <!--Subscription form-->
+                <div class="subscription-form">
+                    <form action="{% url 'ultra_ability:subscribe_newsletter' %}" method="post">
+                        <b>Subscribe to Ultra-Ability Monthly Newsletter:</b>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.confirm_email.label_tag }}
+                            {{ form.confirm_email }}
+                        </div>
+                        <div style="text-align: center;"><button style=" border:1px solid gold;border-radius:5px;padding:5px;" type="submit">Subscribe</button></div>
+
+                        <!-- Display Messages from the back-end -->
+                        {% if messages %}
+                            <div style="color: red; ">
+                                {% for message in messages %}
+                                    <h4>{{message}}</h4>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+                <!--Latest Newsletters-->
+                <div class="latestNewsLetters">
+                    <b>Latest Ultra-Ability Newsletters:</b>
+                    {% for i in last2Newsletters %}
+                    <ul>
+                        <li style="font-size: medium;"><a href="{{ i.getAbsoluteUrl }}"> {{ i.title}}</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Footer Bottom Row -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p><b>&copy; <span id="currentYear"></span> Ultra-Ability Ministry. All rights reserved.</b></p>
+                    <!-- JavaScript to Update the Year -->
+                    <script>
+                        // Get the current year
+                        const currentYear = new Date().getFullYear();
+                        // Update the content of the span element with the current year
+                        document.getElementById('currentYear').textContent = currentYear;
+                    </script>
+                </div>
+                <div class="developer">
+                    <p> Web Application Developed and maintained by <a href="https://www.linkedin.com/in/gideon-unique-a3b03b19a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><b>$GM</b></a></p>
+                </div>
+                <!-- Back to Top Button -->
+                <div class="backToTop">
+                    <button onclick="scrollToTop()" style="padding: 20px 10px 15px 10px"><b>TOP <i class="fa-solid fa-circle-arrow-up"></i></b></button>
+                    <script>
+                        function scrollToTop() {
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }
+                    </script>
+                </div>
+            </div>
+
+         </div>
+
+    </footer>
+
+
+    <script src="{% static 'ultra_ability/JS/script.js' %}"></script>
+
+
+
+</body>
+</html>

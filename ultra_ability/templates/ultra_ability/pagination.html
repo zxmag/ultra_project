@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <!-- Font-Awesome [ social media ] icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .step-links a{ font-weight: bold; border: solid; border-width: 1px; border-radius: 5px; }
+        .step-links a:hover{border-color: gold ; color: #1E2761;}
+        .step-links a i{width:55px; }
+    </style>
+</head>
+
+<body>
+
+    <div class="pagination" style="text-align: center; margin-top: 50px; font-size: large;">
+        <span class="step-links">
+            {% if page.has_previous %}
+                <a href="?page={{ page.previous_page_number }}"><i class="fa-solid fa-backward"></i></a>
+            {% endif %}
+            <span class="current" style="font-weight: bold; color: #1E2761;">
+                {{ page.number}}/{{ page.paginator.num_pages}}
+            </span>
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}"><i class="fa-solid fa-forward"></i></a>
+            {% endif %}
+        </span>
+    </div>
+
+
+</body>
+</html>
